@@ -49,6 +49,22 @@ main p {
   background-clip: text;
 }
 
+.start {
+  padding: 0.6em 1.2em;
+  font-size: 1.5rem;
+  border: none;
+  color: white;
+  background-image: linear-gradient(135deg, #e64553, #8839ef);
+  border-radius: 15px;
+  box-shadow: #0003 0 2px 4px, #0000004d 0 7px 13px -3px, #fff3 0 -3px inset;
+  transition: transform ease 0.5s;
+  cursor: pointer;
+}
+
+.start:hover {
+  transform: translate(2px, -3px);
+}
+
 /* Media queries for hero */
 @media screen and (max-width: 1000px) {
   main p {
@@ -99,4 +115,3 @@ main p {
     font-size: 3.3rem;
   }
 }
-  
