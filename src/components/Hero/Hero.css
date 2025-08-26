@@ -18,25 +18,6 @@
   flex: 1;
 }
 
-header {
-  display: flex;
-  align-items: center;
-}
-
-header img {
-  max-width: 2.7em;
-}
-
-header h1 {
-  font-size: 2.5rem;
-  font-weight: 900;
-  background: linear-gradient(135deg, #e64553, #8839ef);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  /* -webkit-text-stroke: 1px transparent; */
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -68,6 +49,7 @@ main p {
   background-clip: text;
 }
 
+/* Media queries for hero */
 @media screen and (max-width: 1000px) {
   main p {
     font-size: 2.5rem;
@@ -98,12 +80,6 @@ main p {
     gap: 5em;
     padding: 0 1em;
   }
-  header h1 {
-    font-size: 2rem;
-  }
-  header img {
-    max-width: 2em;
-  }
 }
 
 @media screen and (max-width: 480px) {
@@ -112,7 +88,7 @@ main p {
     padding: 0 1em;
   }
 
-  main .hero-text{
+  main .hero-text {
     gap: 1em;
   }
 
@@ -122,10 +98,5 @@ main p {
   .decorative-hero {
     font-size: 3.3rem;
   }
-  header h1 {
-    font-size: 2rem;
-  }
-  header img {
-    max-width: 2em;
-  }
 }
+  

@@ -1,0 +1,36 @@
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 2.7em;
+}
+
+.logo h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #e64553, #8839ef);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Media queries for Logo */
+@media screen and (max-width: 570px) {
+  .logo h1 {
+    font-size: 2rem;
+  }
+  .logo img {
+    max-width: 2em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo h1 {
+    font-size: 1.8rem;
+  }
+  .logo img {
+    max-width: 1.8em;
+  }
+}
