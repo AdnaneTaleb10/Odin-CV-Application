@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import Hero from './components/Hero/Hero'
-import './App.css'
+import Hero from "./components/Hero/Hero";
+import CVBulider from "./components/CVBuilder/CVBulder";
+import "./App.css";
 
 function App() {
-
   return (
     <>
-      <Hero/>
+      {/* <Hero/> */}
+      <CVBulider />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
