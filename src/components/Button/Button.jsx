@@ -1,10 +1,11 @@
 import '../Button/Button.css'
 
-export default function Button ({children , className , icon: Icon , ...props}){
+export default function Button ({children , className , iconPosition = "right" , icon: Icon , ...props}){
     return (
         <button className={`btn ${className}`} {...props}>
+            {iconPosition === "left" && Icon && <Icon/>}
             {children}
-            {Icon && <Icon/>}
+            {iconPosition === "right" && Icon && <Icon/>}
         </button>
     )
 }
