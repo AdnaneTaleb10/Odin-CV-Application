@@ -5,3 +5,17 @@
   align-self: center;
   justify-content: center;
 }
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+}
+
+.buttons .btn.view-cv-btn {
+  background-image: linear-gradient(135deg, #e64553, #8839ef);
+  color: #fff;
+  box-shadow: #0003 0 2px 4px, #0000004d 0 7px 13px -3px, #fff3 0 -3px inset;
+  grid-column: 1 / 3;
+  visibility: hidden;
+}
