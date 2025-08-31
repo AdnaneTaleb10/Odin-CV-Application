@@ -1,0 +1,18 @@
+.form-group {
+  position: relative;
+}
+
+.form-group label {
+  position: absolute;
+  bottom: 10px; 
+  left: 5px;
+  font-size: 1.3rem;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out; 
+}
+
+.form-group label.active {
+  bottom: 35px;
+  font-size: 0.9rem;
+  color: #00f;
+}
