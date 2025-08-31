@@ -4,7 +4,7 @@ import "./FormSection.css";
 export default function FormSection({ title, fields }) {
   return (
     <div className="form-section-wrapper">
-      <div className="form-section">
+      <digit v className="form-section">
         <h1>{title}</h1>
         <form>
           {fields.map((field, index) => {
@@ -19,7 +19,7 @@ export default function FormSection({ title, fields }) {
             );
           })}
         </form>
-      </div>
+      </digit>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { Save, ArrowDownFromLine, Book, Trash } from "lucide-react";
 import "./Sidebar.css";
 import { useState } from "react";
 
-export default function Sidebar() {
+export default function Sidebar({ selectedLink, onLinkChange }) {
   const sections = [
     "Personal Information",
     "Professional Summary",
@@ -13,9 +13,7 @@ export default function Sidebar() {
     "Education",
   ];
 
-  let [activIndex , setActiveIndex] = useState(null)
   return (
-
     <div className="sidebar">
       <Logo />
       <div className="sections">
@@ -23,9 +21,9 @@ export default function Sidebar() {
         <ul>
           {sections.map((section, index) => (
             <li
-              className={activIndex === index ? "active" : ""}
+              className={selectedLink === index ? "active" : ""}
               key={index}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => onLinkChange(index)}
             >
               {section}
             </li>
