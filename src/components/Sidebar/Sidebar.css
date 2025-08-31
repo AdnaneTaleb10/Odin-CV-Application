@@ -32,6 +32,13 @@ ul li:hover {
   color: black;
 }
 
+ul li.active {
+  transform: translateY(-2px);
+  border-bottom: 2px solid black;
+  color: black;
+  font-weight: 500;
+}
+
 .buttons {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
