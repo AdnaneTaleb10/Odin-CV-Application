@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./FormGroup.css";
 
-export default function FormGroup({
+export default function   FormGroup({
   isInput = true,
   id,
   labelName,

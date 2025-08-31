@@ -1,4 +1,3 @@
-import PersonalInfoForm from "../PersonalInfoForm/PersonalInfoForm";
 import Button from "../Button/Button";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import "./Main.css";
@@ -59,15 +58,19 @@ const formSections = [
   },
 ];
 
-export default function Main({linkIndex}) {
+export default function Main({ linkIndex }) {
   return (
     <div className="main">
-
-      {
-          formSections.map((section , index) => (
-            linkIndex === index && <FormSection key={index} title={section.title} fields={section.fields} />
-          ))
-      }
+      {formSections.map(
+        (section, index) =>
+          linkIndex === index && (
+            <FormSection
+              key={index}
+              title={section.title}
+              fields={section.fields}
+            />
+          )
+      )}
 
       <div className="section-navigator">
         <Button
