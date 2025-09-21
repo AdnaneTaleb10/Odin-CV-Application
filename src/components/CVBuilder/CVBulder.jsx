@@ -9,7 +9,12 @@ export default function CVBulider() {
   return (
     <div className="cv-builder">
       <Sidebar selectedLink={activeIndex} onLinkChange={setActiveIndex}/>
-      <Main linkIndex={activeIndex}/>
+      <Main linkIndex={activeIndex} handleIndex={changeIndex}/>
     </div>
   );
+
+
+  function changeIndex(index){
+    setActiveIndex(index)
+  }
 }

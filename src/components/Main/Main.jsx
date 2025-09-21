@@ -58,7 +58,8 @@ const formSections = [
   },
 ];
 
-export default function Main({ linkIndex }) {
+export default function Main({ linkIndex , handleIndex}) {
+
   return (
     <div className="main">
       {formSections.map(
@@ -73,14 +74,17 @@ export default function Main({ linkIndex }) {
       )}
 
       <div className="section-navigator">
-        <Button
-          className="preivous-button"
-          iconPosition="left"
-          icon={ChevronLeft}
-        >
-          Previous
-        </Button>
-        <Button className="next-button" icon={ChevronRight}>
+        {linkIndex > 0 && (
+          <Button
+            className="preivous-button"
+            iconPosition="left"
+            icon={ChevronLeft}
+            onClick={() => handleIndex(linkIndex - 1)}
+          >
+            Previous
+          </Button>
+        )}
+        <Button className="next-button" icon={ChevronRight} onClick={() => handleIndex(linkIndex + 1)}>
           Next
         </Button>
       </div>
