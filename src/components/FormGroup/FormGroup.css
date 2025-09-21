@@ -34,10 +34,18 @@ input {
   font-weight: 500;
 }
 
-input:focus {
+input,textarea:focus {
   outline: none;
 }
 
 input:not(:placeholder-shown) {
   border-bottom: 2px solid #00f;
+}
+
+textarea {
+  overflow: hidden;
+  resize: none;
+  border: none;
+  border-bottom: 2px solid lightgray;
+  font-weight: 500;
 }

@@ -37,6 +37,9 @@ export default function   FormGroup({
           placeholder={placeholder}
           required={isRequired}
           onChange={handleValueChange}
+          cols="43"
+          rows={1}
+          wrap="off"
         />
       )}
     </div>
