@@ -1,0 +1,29 @@
+.skill-container {
+  display: flex;
+  align-items: center;
+  background-color: #fcfcfd;
+  box-shadow: #2d234266 0 2px 4px, #d6d6e7 0 -3px inset;
+  border-radius: 4px;
+  padding: 12px 16px;
+  gap: 1em;
+}
+
+.skill-container p{
+    font-weight: 500;
+}
+
+.remove-button{
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 4px;
+    box-shadow: #0000004a 0 3px 7px inset;
+    cursor: pointer;
+    transition: box-shadow ease 0.2s , transform ease 0.2s;
+}
+
+.remove-button:hover{
+    box-shadow: #2d234266 0 2px 4px, #2d23424c 0 7px 13px -3px, #d20f39 0 -3px inset;
+    transform: translateY(-2px);
+}
