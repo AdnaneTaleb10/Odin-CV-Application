@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "../Button/Button";
 import { Plus } from "lucide-react";
+import Button from "../Button/Button";
 import SkillTag from "../Skill Tag/SkillTag";
-import './SkillSection.css'
+import "./SkillSection.css";
 
 export default function SkillsSection() {
   const [skills, setSkills] = useState([]);
@@ -55,6 +55,7 @@ export default function SkillsSection() {
               type="text"
               id="skill-input"
               value={inputValue}
+              placeholder=""
               onChange={handleValueChange}
             />
           </div>
