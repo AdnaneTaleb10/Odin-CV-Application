@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../Button/Button";
 import { Plus } from "lucide-react";
-import SkillTag from "../SkillTag/SkillTag";
+import SkillTag from "../Skill Tag/SkillTag";
 import './SkillSection.css'
 
 export default function SkillsSection() {

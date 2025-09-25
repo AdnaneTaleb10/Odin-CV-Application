@@ -2,7 +2,7 @@ import Button from "../Button/Button";
 import { ChevronRight, ChevronLeft, Plus } from "lucide-react";
 import "./Main.css";
 import FormSection from "../FormSection/FormSection";
-import SkillTag from "../Skill Tag/SkillTag";
+import SkillsSection from "../SkillSection/SkillSection";
 import { use, useState } from "react";
 
 const formSections = [
@@ -60,104 +60,19 @@ const formSections = [
   },
 ];
 
-export default function Main({ linkIndex, handleIndex }) {
-  const sections = ["Work Experience" , "Professional Summary" , "Skills" , "Work Experience" , "Education"]
-  const [sectionName, setSectionName] = useState(sections[0]);
-  const [isSkillFormOpen, setIsSkillFormOpen] = useState(false);
-  const [skills, setSkills] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-
-  const OpenSkillForm = () => {
-    setInputValue("");
-    setIsSkillFormOpen(true);
-  };
-
-  const closeSkillForm = () => {
-    setIsSkillFormOpen(false);
-  };
-
-  const handleValueChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const addSkill = () => {
-    if (inputValue.trim() !== "") {
-      setSkills((prev) => [...prev, inputValue.trim()]);
-      setInputValue("");
-    }
-    setIsSkillFormOpen(false)
-  };
-
-  const removeSkill = (skillName) => {
-    setSkills((prev) => prev.filter((s) => s !== skillName));
-  };
-
+export default function Main({ currentSection, linkIndex, handleIndex }) {
   return (
     <div className="main">
-      <h1 className="section-title">{sectionName}</h1>
+      <h1 className="section-title">{currentSection}</h1>
       {(() => {
         switch (linkIndex) {
           case 2:
-            return (
-              <>
-                <div className="skills-section">
-                  <div className="skills-container">
-                    {skills.map((skill) => (
-                      <SkillTag
-                        key={skill}
-                        skillName={skill}
-                        handleDeletion={removeSkill}
-                      />
-                    ))}
-                  </div>
-                  {isSkillFormOpen ? (
-                    <div className="add-skill-form">
-                      <h2>Add Skill</h2>
-                      <div className="input-container">
-                        <label
-                          htmlFor="skill-input"
-                          className={inputValue ? "active" : ""}
-                        >
-                          Skill
-                        </label>
-                        <input
-                          type="text"
-                          id="skill-input"
-                          placeholder=""
-                          value={inputValue}
-                          onChange={handleValueChange}
-                        />
-                      </div>
-                      <div className="skill-form-btns">
-                        <Button className="add-btn" onClick={addSkill}>
-                          Add
-                        </Button>
-                        <Button className="cancel-btn" onClick={closeSkillForm}>
-                          Cancel
-                        </Button>
-                      </div>
-                    </div>
-                  ) : (
-                    <Button
-                      className="add-skill-btn"
-                      iconPosition="left"
-                      icon={Plus}
-                      onClick={OpenSkillForm}
-                    >
-                      Add Skill
-                    </Button>
-                  )}
-                </div>
-              </>
-            );
+            return <SkillsSection />;
 
           default:
             return formSections.map((section, index) =>
               linkIndex === index ? (
-                <FormSection
-                  key={index}
-                  fields={section.fields}
-                />
+                <FormSection key={index} fields={section.fields} />
               ) : null
             );
         }
@@ -169,7 +84,9 @@ export default function Main({ linkIndex, handleIndex }) {
             className="preivous-button"
             iconPosition="left"
             icon={ChevronLeft}
-            onClick={() => handleIndex(linkIndex - 1)}
+            onClick={() => {
+              handleIndex(linkIndex - 1);
+            }}
           >
             Previous
           </Button>
@@ -177,7 +94,9 @@ export default function Main({ linkIndex, handleIndex }) {
         <Button
           className="next-button"
           icon={ChevronRight}
-          onClick={() => handleIndex(linkIndex + 1)}
+          onClick={() => {
+            handleIndex(linkIndex + 1);
+          }}
         >
           Next
         </Button>

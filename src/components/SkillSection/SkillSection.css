@@ -1,81 +1,73 @@
 .skills-section {
   display: flex;
   flex-direction: column;
-  gap: 1em;
-  width: 100%;
   align-items: center;
+  justify-content: flex-start;
+  padding-top: 3em;
+  row-gap: 3em;
+  width: 100%;
 }
 
-.skills-container {
+.skills-section h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.skills-container{
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5em;
-  justify-content: flex-start;
-  width: 100%;
+  gap: 20px;
 }
 
 .add-skill-form {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.75em;
-  width: 100%;
-  max-width: 400px;
-  background: #fff;
-  padding: 1em;
-  border-radius: 0.5em;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  align-items: center;
+  min-width: 60%;
+  background-color: #fcfcfd;
+  box-shadow: #2d234266 0 2px 4px, #d6d6e7 0 -3px inset;
+  border-radius: 4px;
+  padding: 20px 25px;
+}
+
+.add-skill-form h2 {
+  font-weight: 800;
+  margin-bottom: 1em;
 }
 
 .input-container {
-  display: flex;
-  flex-direction: column;
   position: relative;
+  width: 100%;
+}
+
+.input-container input {
+  width: 100%;
 }
 
 .input-container label {
   position: absolute;
-  top: -0.6em;
-  left: 0.5em;
-  font-size: 0.75rem;
-  color: #555;
-  transition: color 0.2s;
+  bottom: 10px;
+  left: 5px;
+  font-size: 1.3rem;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
 }
 
 .input-container label.active {
-  color: #000;
-}
-
-.input-container input {
-  padding: 0.6em;
-  border: 1px solid #ccc;
-  border-radius: 0.4em;
-  outline: none;
+  bottom: 35px;
+  font-size: 0.9rem;
+  color: #00f;
 }
 
 .skill-form-btns {
   display: flex;
-  justify-content: flex-end;
-  gap: 0.5em;
+  justify-content: center;
+  margin-top: 1.5em;
+  gap: 1em;
 }
 
 .add-skill-btn {
-  background: #007bff;
-  color: white;
-  padding: 0.6em 1em;
-  border-radius: 0.4em;
-  cursor: pointer;
-}
-
-.add-btn {
-  background: #28a745;
-  color: white;
-  padding: 0.5em 1em;
-  border-radius: 0.4em;
-}
-
-.cancel-btn {
-  background: #dc3545;
-  color: white;
-  padding: 0.5em 1em;
-  border-radius: 0.4em;
+  padding: 10px;
 }
