@@ -3,7 +3,7 @@ import { ChevronRight, ChevronLeft, Plus } from "lucide-react";
 import "./Main.css";
 import FormSection from "../FormSection/FormSection";
 import SkillTag from "../Skill Tag/SkillTag";
-import { useState } from "react";
+import { use, useState } from "react";
 
 const formSections = [
   {
@@ -61,6 +61,8 @@ const formSections = [
 ];
 
 export default function Main({ linkIndex, handleIndex }) {
+  const sections = ["Work Experience" , "Professional Summary" , "Skills" , "Work Experience" , "Education"]
+  const [sectionName, setSectionName] = useState(sections[0]);
   const [isSkillFormOpen, setIsSkillFormOpen] = useState(false);
   const [skills, setSkills] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -78,13 +80,12 @@ export default function Main({ linkIndex, handleIndex }) {
     setInputValue(e.target.value);
   };
 
-  const addSkill = (e) => {
-    const addSkill = () => {
-      if (inputValue.trim() !== "") {
-        setSkills((prev) => [...prev, inputValue.trim()]);
-        setInputValue(""); 
-      }
-    };
+  const addSkill = () => {
+    if (inputValue.trim() !== "") {
+      setSkills((prev) => [...prev, inputValue.trim()]);
+      setInputValue("");
+    }
+    setIsSkillFormOpen(false)
   };
 
   const removeSkill = (skillName) => {
@@ -93,13 +94,13 @@ export default function Main({ linkIndex, handleIndex }) {
 
   return (
     <div className="main">
+      <h1 className="section-title">{sectionName}</h1>
       {(() => {
         switch (linkIndex) {
           case 2:
             return (
               <>
                 <div className="skills-section">
-                  <h1>Skills</h1>
                   <div className="skills-container">
                     {skills.map((skill) => (
                       <SkillTag
@@ -155,7 +156,6 @@ export default function Main({ linkIndex, handleIndex }) {
               linkIndex === index ? (
                 <FormSection
                   key={index}
-                  title={section.title}
                   fields={section.fields}
                 />
               ) : null

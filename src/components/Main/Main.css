@@ -1,12 +1,34 @@
-.main {
+/*
+  The main need to be implemented by grid and not by flexbox 
+*/
+
+/* .main {
   width: 100%;
   height: 100%;
   background-image: radial-gradient(#0000004a 1px, transparent 0);
   background-size: 40px 40px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   padding: 1em;
+} */
+
+.main{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: minmax(4em, auto) 1fr minmax(4em, auto);
+  justify-items: center;
+  background-image: radial-gradient(#0000004a 1px, transparent 0);
+  background-size: 40px 40px;
+  padding: 1em;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  align-self: center;
 }
 
 .section-navigator {
@@ -62,12 +84,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  padding-top: 3em;
   row-gap: 3em;
+  width: 100%;
 }
 
 .skills-section h1 {
   font-size: 2.5rem;
   font-weight: 500;
+}
+
+.skills-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .add-skill-form {
@@ -111,7 +142,7 @@
   color: #00f;
 }
 
-.skill-form-btns{
+.skill-form-btns {
   display: flex;
   justify-content: center;
   margin-top: 1.5em;
