@@ -60,23 +60,23 @@ export default function SkillsSection() {
             />
           </div>
           <div className="skill-form-btns">
-            <Button className="add-btn" onClick={addSkill}>
-              Add
-            </Button>
-            <Button className="cancel-btn" onClick={closeSkillForm}>
-              Cancel
-            </Button>
+            <Button className="add-btn" title="Add" onClick={addSkill} />
+
+            <Button
+              className="cancel-btn"
+              title="Cancel"
+              onClick={closeSkillForm}
+            />
           </div>
         </div>
       ) : (
         <Button
           className="add-skill-btn"
+          title="Add Skill"
           iconPosition="left"
           icon={Plus}
           onClick={openSkillForm}
-        >
-          Add Skill
-        </Button>
+        />
       )}
     </div>
   );

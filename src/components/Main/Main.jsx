@@ -82,24 +82,22 @@ export default function Main({ currentSection, linkIndex, handleIndex }) {
         {linkIndex > 0 && (
           <Button
             className="preivous-button"
+            title="Previous"
             iconPosition="left"
             icon={ChevronLeft}
             onClick={() => {
               handleIndex(linkIndex - 1);
             }}
-          >
-            Previous
-          </Button>
+          />
         )}
         <Button
           className="next-button"
+          title="Next"
           icon={ChevronRight}
           onClick={() => {
             handleIndex(linkIndex + 1);
           }}
-        >
-          Next
-        </Button>
+        />
       </div>
     </div>
   );

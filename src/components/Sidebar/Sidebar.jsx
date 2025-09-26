@@ -31,19 +31,15 @@ export default function Sidebar({ selectedLink, onLinkChange }) {
         </ul>
       </div>
       <div className="buttons">
-        <Button className="view-cv-btn">View CV</Button>
-        <Button className="save-btn" icon={Save}>
-          Save
-        </Button>
-        <Button className="load-btn" icon={ArrowDownFromLine}>
-          Load
-        </Button>
-        <Button className="load-example-btn" icon={Book}>
-          Example
-        </Button>
-        <Button className="clear-btn" icon={Trash}>
-          Clear
-        </Button>
+        <Button className="view-cv-btn" title="ViewCV" />
+
+        <Button className="save-btn" title="Save" icon={Save} />
+
+        <Button className="load-btn" title="Load" icon={ArrowDownFromLine} />
+
+        <Button className="load-example-btn" title="Example" icon={Book} />
+
+        <Button className="clear-btn" title="Clear" icon={Trash} />
       </div>
     </div>
   );
