@@ -15,7 +15,7 @@
   list-style-position: inside;
 }
 
-ul li {
+.sections ul li {
   font-size: 1.6rem;
   font-weight: 500;
   margin: 14px 0;
@@ -26,13 +26,13 @@ ul li {
   transition: transform ease 0.2s;
 }
 
-ul li:hover {
+.sections ul li:hover {
   transform: translateY(-2px);
   border-bottom: 1px solid black;
   color: black;
 }
 
-ul li.active {
+.sections ul li.active {
   transform: translateY(-2px);
   border-bottom: 2px solid black;
   color: black;
