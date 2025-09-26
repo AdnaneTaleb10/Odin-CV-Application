@@ -4,6 +4,7 @@ import "./Main.css";
 import FormSection from "../FormSection/FormSection";
 import SkillsSection from "../SkillSection/SkillSection";
 import { use, useState } from "react";
+import Experience from "../Work Experience/Experience";
 
 const formSections = [
   {
@@ -63,11 +64,13 @@ const formSections = [
 export default function Main({ currentSection, linkIndex, handleIndex }) {
   return (
     <div className="main">
-      <h1 className="section-title">{currentSection}</h1>
+      <h1 className=" ">{currentSection}</h1>
       {(() => {
         switch (linkIndex) {
           case 2:
             return <SkillsSection />;
+          case 3:
+            return <Experience />
 
           default:
             return formSections.map((section, index) =>
