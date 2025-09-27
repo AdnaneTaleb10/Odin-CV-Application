@@ -4,6 +4,7 @@
   padding: 2em;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .form-section {
@@ -23,5 +24,6 @@ form {
   flex-direction: column;
   align-items: center;
   gap: 4em;
+  margin-top: 5em;
 }
 

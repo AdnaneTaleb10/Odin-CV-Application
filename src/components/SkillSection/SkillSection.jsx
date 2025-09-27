@@ -4,30 +4,32 @@ import Button from "../Button/Button";
 import SkillTag from "../Skill Tag/SkillTag";
 import "./SkillSection.css";
 
-export default function SkillsSection({
-  sectionContent,
-  updateSectionContent,
-  removeSectionContent
-}) {
-  const skills = sectionContent[2].content;
+export default function SkillsSection() {
+  const [skills, setSkills] = useState([]);
   const [isSkillFormOpen, setIsSkillFormOpen] = useState(false);
-   const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
-  const fieldValue =
-    sectionContent[2].content[sectionContent[2].content.length - 1];
+  const openSkillForm = () => {
+    setInputValue("");
+    setIsSkillFormOpen(true);
+  };
+
+  const closeSkillForm = () => {
+    setIsSkillFormOpen(false);
+  };
 
   const handleValueChange = (e) => setInputValue(e.target.value);
 
   const addSkill = () => {
     if (inputValue.trim() !== "") {
-      updateSectionContent("Skills", "", inputValue);
+      setSkills((prev) => [...prev, inputValue.trim()]);
       setInputValue("");
-      setIsSkillFormOpen(false);
     }
+    setIsSkillFormOpen(false);
   };
 
   const removeSkill = (skillName) => {
-    removeSectionContent("Skills" , skillName)
+    setSkills((prev) => prev.filter((s) => s !== skillName));
   };
 
   return (
@@ -37,15 +39,14 @@ export default function SkillsSection({
           <SkillTag
             key={skill}
             skillName={skill}
-            handleDeletion={() => removeSkill(skill)}
+            handleDeletion={removeSkill}
           />
         ))}
       </div>
 
-      {isSkillFormOpen ? ( //Change this implementation and use FormSection component
+      {isSkillFormOpen ? (
         <div className="add-skill-form">
           <h2>Add Skill</h2>
-
           <div className="input-container">
             <label htmlFor="skill-input" className={inputValue ? "active" : ""}>
               Skill
@@ -58,14 +59,13 @@ export default function SkillsSection({
               onChange={handleValueChange}
             />
           </div>
-
           <div className="skill-form-btns">
             <Button className="add-btn" title="Add" onClick={addSkill} />
 
             <Button
               className="cancel-btn"
               title="Cancel"
-              onClick={() => setIsSkillFormOpen(false)}
+              onClick={closeSkillForm}
             />
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function SkillsSection({
           title="Add Skill"
           iconPosition="left"
           icon={Plus}
-          onClick={() => setIsSkillFormOpen(true)}
+          onClick={openSkillForm}
         />
       )}
     </div>

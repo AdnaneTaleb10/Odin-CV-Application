@@ -7,7 +7,7 @@ export default function HistoryItem({
   startDate,
   endDate,
   location,
-  achievements = [],
+  children,
 }) {
   return (
     <div className="history-item">
@@ -30,14 +30,11 @@ export default function HistoryItem({
         </div>
       </div>
 
-      {achievements && (
-        <ul className="history-details">
-          {achievements.map((achievement , index) => {
-            return <li key={index} className='achievement'>{achievement}</li>
-          })}
-        </ul>
+      {children && (
+        <div className="history-details">
+          {children}
+        </div>
       )}
-
     </div>
   )
 }

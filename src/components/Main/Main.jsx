@@ -4,7 +4,6 @@ import "./Main.css";
 import FormSection from "../FormSection/FormSection";
 import SkillsSection from "../SkillSection/SkillSection";
 import { use, useState } from "react";
-import Experience from "../Work Experience/Experience";
 
 const formSections = [
   {
@@ -61,45 +60,19 @@ const formSections = [
   },
 ];
 
-export default function Main({
-  currentSection,
-  linkIndex,
-  handleIndex,
-  sectionContent,
-  updateSectionContent,
-  removeSectionContent,
-}) {
+export default function Main({ currentSection, linkIndex, handleIndex }) {
   return (
     <div className="main">
       <h1 className="section-title">{currentSection}</h1>
       {(() => {
         switch (linkIndex) {
           case 2:
-            return (
-              <SkillsSection
-                sectionContent={sectionContent}
-                updateSectionContent={updateSectionContent}
-                removeSectionContent = {removeSectionContent}
-              />
-            );
-          case 3:
-            return (
-              <Experience
-                sectionContent={sectionContent}
-                updateSectionContent={updateSectionContent}
-              />
-            );
+            return <SkillsSection />;
 
           default:
             return formSections.map((section, index) =>
               linkIndex === index ? (
-                <FormSection
-                  key={index}
-                  title={section.title}
-                  fields={section.fields}
-                  sectionContent={sectionContent}
-                  updateSectionContent={updateSectionContent}
-                />
+                <FormSection key={index} fields={section.fields} />
               ) : null
             );
         }
