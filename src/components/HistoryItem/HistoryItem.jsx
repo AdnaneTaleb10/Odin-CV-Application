@@ -1,5 +1,5 @@
-import './HistoryItem.css'
-import { Trash, Calendar, MapPin } from 'lucide-react'
+import "./HistoryItem.css";
+import { Trash, Calendar, MapPin } from "lucide-react";
 
 export default function HistoryItem({
   title,
@@ -7,7 +7,7 @@ export default function HistoryItem({
   startDate,
   endDate,
   location,
-  children,
+  achievements,
 }) {
   return (
     <div className="history-item">
@@ -21,7 +21,9 @@ export default function HistoryItem({
 
         <div className="history-duration">
           <Calendar />
-          <p>{startDate} – {endDate}</p>
+          <p>
+            {startDate} – {endDate}
+          </p>
         </div>
 
         <div className="history-location">
@@ -30,11 +32,16 @@ export default function HistoryItem({
         </div>
       </div>
 
-      {children && (
-        <div className="history-details">
-          {children}
-        </div>
-      )}
+      <ul className="achievements-container">
+        {achievements &&
+          achievements.map((achievement, index) => {
+            return (
+              <li key={index} className="achievement">
+                {achievement}
+              </li>
+            );
+          })}
+      </ul>
     </div>
-  )
+  );
 }

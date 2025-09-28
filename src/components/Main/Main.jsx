@@ -4,6 +4,7 @@ import "./Main.css";
 import FormSection from "../FormSection/FormSection";
 import SkillsSection from "../SkillSection/SkillSection";
 import { use, useState } from "react";
+import HistoryItem from "../HistoryItem/HistoryItem";
 
 const formSections = [
   {
@@ -68,6 +69,23 @@ export default function Main({ currentSection, linkIndex, handleIndex }) {
         switch (linkIndex) {
           case 2:
             return <SkillsSection />;
+          case 3:
+            return (
+              <HistoryItem
+                title="Senior Software Developer"
+                organization="Optum"
+                startDate="03/2021"
+                endDate="Present"
+                location="London, UK"
+                achievements={[
+                  "Led the integration of critical APIs improving data retrieval speeds by 30%, enhancing overall system performance.",
+                  "Automated testing processes, reducing manual errors by 25% and streamlining workflow for improved team efficiency.",
+                  "Collaborated on strategic data migration projects, resulting in a 40% increase in data availability and relevance.",
+                  "Provided mentorship to junior developers resulting in a 20% improvement in team programming skill proficiency.",
+                  "Enhanced user experience through thoughtful application design changes, boosting customer satisfaction scores by 10%.",
+                ]}
+              />
+            );
 
           default:
             return formSections.map((section, index) =>
