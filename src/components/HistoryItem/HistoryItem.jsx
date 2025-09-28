@@ -7,7 +7,7 @@ export default function HistoryItem({
   startDate,
   endDate,
   location,
-  achievements,
+  achievements = [],
 }) {
   return (
     <div className="history-item">

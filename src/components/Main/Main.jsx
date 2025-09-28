@@ -5,6 +5,7 @@ import FormSection from "../FormSection/FormSection";
 import SkillsSection from "../SkillSection/SkillSection";
 import { use, useState } from "react";
 import HistoryItem from "../HistoryItem/HistoryItem";
+import Experience from "../Experience/Experience";
 
 const formSections = [
   {
@@ -71,7 +72,7 @@ export default function Main({ currentSection, linkIndex, handleIndex }) {
             return <SkillsSection />;
           case 3:
             return (
-              <HistoryItem
+/*               <HistoryItem
                 title="Senior Software Developer"
                 organization="Optum"
                 startDate="03/2021"
@@ -84,7 +85,9 @@ export default function Main({ currentSection, linkIndex, handleIndex }) {
                   "Provided mentorship to junior developers resulting in a 20% improvement in team programming skill proficiency.",
                   "Enhanced user experience through thoughtful application design changes, boosting customer satisfaction scores by 10%.",
                 ]}
-              />
+              /> */
+
+              <Experience />
             );
 
           default:
