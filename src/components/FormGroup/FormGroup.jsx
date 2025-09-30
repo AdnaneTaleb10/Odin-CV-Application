@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./FormGroup.css";
 
 export default function FormGroup({
@@ -13,8 +12,6 @@ export default function FormGroup({
   sectionContent,
   updateSectionContent,
 }) {
-  const [inputValue, setInputValue] = useState("");
-
   const sectionIndex = Array.isArray(sectionContent)
     ? sectionContent.findIndex((item) => item.title === title)
     : -1;
