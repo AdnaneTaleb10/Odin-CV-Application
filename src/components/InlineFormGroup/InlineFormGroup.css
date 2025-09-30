@@ -1,0 +1,38 @@
+.inline-form-group {
+  position: relative;
+  margin-bottom: 1.5rem; /* spacing between fields */
+  width: 100%;
+}
+
+.inline-form-group label {
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  font-size: 1.3rem;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+  color: grey;
+}
+
+.inline-form-group label.active {
+  bottom: 35px;
+  font-size: 0.9rem;
+  color: #00f;
+}
+
+.inline-form-group input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid lightgray;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 5px;
+}
+
+.inline-form-group input:focus {
+  outline: none;
+}
+
+input:not(:placeholder-shown) {
+  border-bottom: 2px solid #00f;
+}
