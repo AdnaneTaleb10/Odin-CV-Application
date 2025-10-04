@@ -3,8 +3,6 @@ import { ChevronRight, ChevronLeft, Plus } from "lucide-react";
 import "./Main.css";
 import FormSection from "../FormSection/FormSection";
 import SkillsSection from "../SkillSection/SkillSection";
-import { use, useState } from "react";
-import HistoryItem from "../HistoryItem/HistoryItem";
 import Experience from "../Experience/Experience";
 
 const formSections = [
@@ -96,7 +94,6 @@ export default function Main({
               linkIndex === index ? (
                 <FormSection
                   key={index}
-                  title={section.title}
                   fields={section.fields}
                   sectionContent={sectionContent}
                   updateSectionContent={updateSectionContent}

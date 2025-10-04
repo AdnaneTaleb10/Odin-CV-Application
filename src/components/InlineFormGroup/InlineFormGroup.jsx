@@ -10,14 +10,19 @@ export default function InlineFormGroup({
 }) {
   return (
     <div className="inline-form-group">
-      <label htmlFor={id} className={value ? "active" : ""}>
-        {label}
-      </label>
+      {inputType === "date" ? (
+        <p className="date-label">{label}</p>
+      ) : (
+        <label htmlFor={id} className={value ? "active" : ""}>
+          {label}
+        </label>
+      )}
+
       <input
         type={inputType}
         id={id}
         name={id}
-        placeholder={placeholder}
+        placeholder={inputType !== "date" ? placeholder : ""}
         value={value}
         onChange={onChange}
         required

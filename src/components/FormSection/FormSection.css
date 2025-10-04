@@ -7,16 +7,27 @@
   justify-content: space-between;
 }
 
+.form-section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.inline {
+  width: 60%;
+  background-color: #fcfcfd;
+  box-shadow: #2d234266 0 2px 4px, #d6d6e7 0 -3px inset;
+  border-radius: 4px;
+}
+
+.inline form {
+  gap: 2em;
+}
+
 .form-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-
-.form-section h1 {
-  font-size: 2.5rem;
-  font-weight: 500;
 }
 
 form {
@@ -27,3 +38,34 @@ form {
   margin-top: 5em;
 }
 
+.control-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.accomplishments-section {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  margin-top: 2em;
+}
+
+.accomplishments-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.accomplishments-section ul {
+  padding-left: 1.2em;
+}
+
+.accomplishments-section li {
+  line-height: 1.4;
+}
+
+.add-accomplishment-btn {
+  align-self: flex-start;
+}

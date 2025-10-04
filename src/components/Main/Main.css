@@ -1,12 +1,13 @@
 .main{
-  width: 100%;
-  height: 100%;
+  flex: 1;  
+  height: auto;
   display: grid;
-  grid-template-rows: minmax(4em, auto) 1fr minmax(4em, auto);
+  grid-template-rows: auto 1fr auto;
   justify-items: center;
   background-image: radial-gradient(#0000004a 1px, transparent 0);
   background-size: 40px 40px;
   padding: 1em;
+  overflow-x: hidden;
 }
 
 .section-title {
@@ -22,6 +23,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  padding: 1em 2em;
 }
 
 .btn {
@@ -52,15 +54,16 @@
 }
 
 .section-navigator .btn {
-  position: absolute;
-  bottom: 10px;
+  position: relative;
 }
 
 .section-navigator > .preivous-button {
+  position: absolute;
   left: 20px;
 }
 
 .section-navigator > .next-button {
+  position: absolute;
   right: 20px;
 }
 

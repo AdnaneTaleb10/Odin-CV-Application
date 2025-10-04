@@ -1,7 +1,10 @@
-.work-experience-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+.work-experience-container {
+  width: 100%;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 2em 1.5em; 
+  margin-bottom: 3em;
 }
