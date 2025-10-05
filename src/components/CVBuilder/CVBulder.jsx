@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function CVBulider() {
   const sections = [
-    "Work Experience",
+    "Personal Information",
     "Professional Summary",
     "Skills",
     "Work Experience",
