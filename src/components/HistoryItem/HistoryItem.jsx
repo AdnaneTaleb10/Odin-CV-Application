@@ -13,7 +13,7 @@ export default function HistoryItem({
     <div className="history-item">
       <div className="history-header">
         <p className="history-title">{title}</p>
-        <Trash className="delete-icon" />
+        <Trash className="delete-icon" />   {/* //add the functionality of deleting a history item */}
       </div>
 
       <div className="history-meta">

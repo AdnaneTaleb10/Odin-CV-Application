@@ -44,14 +44,12 @@ export default function Experience() {
 
     setExperiences((prev) => [...prev, newExperience]);
 
-    // reset form + close
     setSectionContent({});
     setIsFormOpened(false);
   }
 
   return (
     <div className="work-experience-container">
-      {/* Render all experiences */}
       {experiences.map((exp, idx) => (
         <HistoryItem
           key={idx}
@@ -74,7 +72,6 @@ export default function Experience() {
           showControls={true}
           showForm={setIsFormOpened}
           withAccomplishments={true}
-          // Pass callback so Add button can insert a new HistoryItem
           onAdd={handleAddExperience}
         />
       ) : (

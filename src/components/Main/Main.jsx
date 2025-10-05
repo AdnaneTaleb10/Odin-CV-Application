@@ -4,6 +4,7 @@ import "./Main.css";
 import FormSection from "../FormSection/FormSection";
 import SkillsSection from "../SkillSection/SkillSection";
 import Experience from "../Experience/Experience";
+import Education from "../Education/Education";
 
 const formSections = [
   {
@@ -88,6 +89,10 @@ export default function Main({
                 updateSectionContent={updateSectionContent}
               />
             );
+          case 4:
+            return(
+              <Education/>
+            )
 
           default:
             return formSections.map((section, index) =>
