@@ -5,7 +5,6 @@ import { Plus } from "lucide-react";
 import FormSection from "../FormSection/FormSection";
 import { useState } from "react";
 
-// Define the form fields
 const formFields = [
   { label: "Position", id: "position" },
   { label: "Organization", id: "organization" },
@@ -14,37 +13,20 @@ const formFields = [
   { label: "To", id: "endDate", inputType: "date" },
 ];
 
-export default function Experience() {
+export default function Experience({
+  sectionContent,
+  updateSectionContent,
+  removeSectionContent,
+}) {
   const [isFormOpened, setIsFormOpened] = useState(false);
 
-  // state for experiences (multiple HistoryItem)
-  const [experiences, setExperiences] = useState([]);
+  // extract work experience data for this section
+  const experiences = sectionContent.find(
+    (section) => section.title === "Work Experience"
+  )?.content || [];
 
-  // state for current form inputs
-  const [sectionContent, setSectionContent] = useState({});
-
-  // update form field values
-  function updateSectionContent(sectionTitle, fieldId, value) {
-    setSectionContent((prev) => ({
-      ...prev,
-      [fieldId]: value,
-    }));
-  }
-
-  // add a new experience from the form
-  function handleAddExperience(accomplishments = []) {
-    const newExperience = {
-      position: sectionContent.position,
-      organization: sectionContent.organization,
-      location: sectionContent.location,
-      startDate: sectionContent.startDate,
-      endDate: sectionContent.endDate,
-      achievements: accomplishments,
-    };
-
-    setExperiences((prev) => [...prev, newExperience]);
-
-    setSectionContent({});
+  function handleAddExperience(newExperience) {
+    updateSectionContent("Work Experience", null, newExperience);
     setIsFormOpened(false);
   }
 
@@ -66,13 +48,13 @@ export default function Experience() {
         <FormSection
           title="Add Experience"
           fields={formFields}
-          sectionContent={sectionContent}
-          updateSectionContent={updateSectionContent}
           formType="inline"
           showControls={true}
           showForm={setIsFormOpened}
           withAccomplishments={true}
           onAdd={handleAddExperience}
+          sectionContent={sectionContent}
+          updateSectionContent={updateSectionContent}
         />
       ) : (
         <Button

@@ -87,18 +87,24 @@ export default function Main({
               <Experience
                 sectionContent={sectionContent}
                 updateSectionContent={updateSectionContent}
+                removeSectionContent={removeSectionContent}
               />
             );
           case 4:
-            return(
-              <Education/>
-            )
+            return (
+              <Education
+                sectionContent={sectionContent}
+                updateSectionContent={updateSectionContent}
+                removeSectionContent={removeSectionContent}
+              />
+            );
 
           default:
             return formSections.map((section, index) =>
               linkIndex === index ? (
                 <FormSection
                   key={index}
+                  title={section.title}
                   fields={section.fields}
                   sectionContent={sectionContent}
                   updateSectionContent={updateSectionContent}

@@ -45,20 +45,29 @@ export default function CVBulider() {
     },
   ]);
 
-  function updateSectionContent(title, fieldId, value) {
-    setSectionContent((prev) =>
-      prev.map((section) =>
-        section.title === title
-          ? {
-              ...section,
-              content: Array.isArray(section.content)
-                ? [...section.content, value]
-                : { ...section.content, [fieldId]: value },
-            }
-          : section
-      )
-    );
-  }
+function updateSectionContent(title, fieldId, value) {
+  setSectionContent((prev) =>
+    prev.map((section) => {
+      if (section.title !== title) return section;
+
+      if (!Array.isArray(section.content)) {
+        return {
+          ...section,
+          content: {
+            ...section.content,
+            [fieldId]: value,
+          },
+        };
+      }
+
+      return {
+        ...section,
+        content: [...section.content, value],
+      };
+    })
+  );
+}
+
 
   function removeSectionContent(title, value) {
     setSectionContent((prev) =>

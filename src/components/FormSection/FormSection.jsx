@@ -6,20 +6,41 @@ import { Plus } from "lucide-react";
 import { useState } from "react";
 
 export default function FormSection({
-  title = "", // NEW optional title
-  fields,
-  sectionContent,
-  updateSectionContent,
+  title = "",
+  fields = [],
   formType = "standard", // "standard" | "inline"
   showControls = false,
   showForm,
-  withAccomplishments = false, // NEW prop
-  onAdd,
+  sectionContent,
+  updateSectionContent,
+  withAccomplishments = false,
+  onAdd, // parent callback
 }) {
+  // local state for all form fields
+  const [formData, setFormData] = useState({});
   const [accomplishments, setAccomplishments] = useState([]);
 
+  // update local field values
+  function handleFieldChange(fieldId, value) {
+    setFormData((prev) => ({
+      ...prev,
+      [fieldId]: value,
+    }));
+  }
+
+  // handle add accomplishment
   function addAccomplishment(newItem) {
     setAccomplishments((prev) => [...prev, newItem]);
+  }
+
+  // handle submit
+  function handleAdd(e) {
+    e.preventDefault();
+    if (onAdd) {
+      onAdd({ ...formData, achievements: accomplishments });
+    }
+    setFormData({});
+    setAccomplishments([]);
   }
 
   return (
@@ -28,11 +49,11 @@ export default function FormSection({
         formType === "inline" ? "inline" : ""
       }`}
     >
-      {/* Render title only if it's passed */}
-      {title && <h2 className="form-section-title">{title}</h2>}
 
       <form>
         {fields.map((field, index) => {
+          const value = formData[field.id] || "";
+
           if (formType === "inline") {
             return (
               <InlineFormGroup
@@ -41,23 +62,34 @@ export default function FormSection({
                 inputType={field.inputType}
                 id={field.id}
                 placeholder={field.placeholder}
-                value={sectionContent[field.id] || ""}
-                onChange={(e) =>
-                  updateSectionContent(title, field.id, e.target.value)
-                }
+                value={value}
+                onChange={(e) => handleFieldChange(field.id, e.target.value)}
               />
             );
           }
 
           return (
+           /*  <FormGroup
+              title={title} // just added now 
+              key={index}
+              isInput={field.isInput}
+              id={field.id}
+              value={value}
+              labelName={field.labelName}
+              isRequired={field.isRequired}
+              sectionContent={formData}
+              updateSectionContent={(t, id, val) => handleFieldChange(id, val)}
+            /> */
+
             <FormGroup
               key={index}
+              title = {title}
               isInput={field.isInput}
               id={field.id}
               labelName={field.labelName}
               isRequired={field.isRequired}
-              sectionContent={sectionContent}
-              updateSectionContent={updateSectionContent}
+              sectionContent = {sectionContent}
+              updateSectionContent = {updateSectionContent}
             />
           );
         })}
@@ -65,13 +97,11 @@ export default function FormSection({
         {withAccomplishments && (
           <div className="accomplishments-section">
             <h3>Accomplishments</h3>
-
             <ul>
               {accomplishments.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
             </ul>
-
             <Button
               title="Add Accomplishment"
               className="add-accomplishment-btn"
@@ -87,14 +117,7 @@ export default function FormSection({
 
         {showControls && (
           <div className="control-btns">
-            <Button
-              className="add-btn"
-              title="Add"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onAdd) onAdd(accomplishments); 
-              }}
-            />
+            <Button className="add-btn" title="Add" onClick={handleAdd} />
             <Button
               className="cancel-btn"
               title="Cancel"

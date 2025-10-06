@@ -33,7 +33,7 @@ export default function FormGroup({
       {isInput ? (
         <input
           id={id}
-          name={id} 
+          name={id}
           type={type}
           value={fieldValue}
           placeholder={placeholder}
