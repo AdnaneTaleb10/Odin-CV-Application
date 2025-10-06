@@ -6,6 +6,7 @@ import { Plus } from "lucide-react";
 import { useState } from "react";
 
 export default function FormSection({
+  showTitle = false,
   title = "",
   fields = [],
   formType = "standard", // "standard" | "inline"
@@ -49,6 +50,7 @@ export default function FormSection({
         formType === "inline" ? "inline" : ""
       }`}
     >
+      {showTitle && <h2 className="form-section-title">{title}</h2>}
 
       <form>
         {fields.map((field, index) => {
@@ -69,17 +71,6 @@ export default function FormSection({
           }
 
           return (
-           /*  <FormGroup
-              title={title} // just added now 
-              key={index}
-              isInput={field.isInput}
-              id={field.id}
-              value={value}
-              labelName={field.labelName}
-              isRequired={field.isRequired}
-              sectionContent={formData}
-              updateSectionContent={(t, id, val) => handleFieldChange(id, val)}
-            /> */
 
             <FormGroup
               key={index}
