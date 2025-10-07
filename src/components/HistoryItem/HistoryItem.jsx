@@ -8,12 +8,13 @@ export default function HistoryItem({
   endDate,
   location,
   achievements = [],
+  handleDeletion
 }) {
   return (
     <div className="history-item">
       <div className="history-header">
         <p className="history-title">{title}</p>
-        <Trash className="delete-icon" />   {/* //add the functionality of deleting a history item */}
+        <Trash className="delete-icon" onClick={handleDeletion}/> 
       </div>
 
       <div className="history-meta">

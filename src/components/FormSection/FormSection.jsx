@@ -71,16 +71,15 @@ export default function FormSection({
           }
 
           return (
-
             <FormGroup
               key={index}
-              title = {title}
+              title={title}
               isInput={field.isInput}
               id={field.id}
               labelName={field.labelName}
               isRequired={field.isRequired}
-              sectionContent = {sectionContent}
-              updateSectionContent = {updateSectionContent}
+              sectionContent={sectionContent}
+              updateSectionContent={updateSectionContent}
             />
           );
         })}

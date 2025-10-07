@@ -30,6 +30,10 @@ export default function Experience({
     setIsFormOpened(false);
   }
 
+  function removeExperience(experience){
+    removeSectionContent("Work Experience" , experience)
+  }
+
   return (
     <div className="work-experience-container">
       {experiences.map((exp, idx) => (
@@ -41,6 +45,7 @@ export default function Experience({
           endDate={exp.endDate}
           location={exp.location}
           achievements={exp.achievements}
+          handleDeletion = {() => removeExperience(exp)}
         />
       ))}
 

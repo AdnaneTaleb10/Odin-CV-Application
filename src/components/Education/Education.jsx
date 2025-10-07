@@ -3,6 +3,7 @@ import FormSection from "../FormSection/FormSection";
 import Button from "../Button/Button";
 import { Plus } from "lucide-react";
 import "./Education.css";
+import { useState } from "react";
 
 const formFields = [
   { label: "Degree", id: "degree" },
@@ -12,32 +13,61 @@ const formFields = [
   { label: "To", id: "endDate", inputType: "date" },
 ];
 
-export default function Education() {
+export default function Education({
+  sectionContent,
+  updateSectionContent,
+  removeSectionContent,
+}) {
+  const [isFormOpened, setIsFormOpened] = useState(false);
+  const degrees =
+    sectionContent.find((sec) => sec.title === "Education")?.content || [];
+
+  function handleAddDegree(newDegree) {
+    updateSectionContent("Education", null, newDegree);
+    setIsFormOpened(false);
+  }
+
+  function removeDegree(degree) {
+    removeSectionContent("Education", degree);
+  }
+
   return (
     <div className="education-container">
-      <HistoryItem
-        title="Associate Degree in Computer Science"
-        organization="Portsmouth College"
-        startDate="01/2013"
-        endDate="01/2015"
-        location="Portsmouth, UK"
-      />
+      {console.log(degrees)}
 
-      <FormSection
-        title="Add Degree"
-        fields={formFields}
-        sectionContent=""
-        updateSectionContent=""
-        formType="inline"
-        showForm=""
-      />
+      {degrees.map((deg, idx) => (
+        <HistoryItem
+          key={idx}
+          title={deg.degree}
+          organization={deg.institution}
+          startDate={deg.startDate}
+          endDate={deg.endDate}
+          location={deg.location}
+          handleDeletion={() => removeDegree(deg)}
+        />
+      ))}
 
-      <Button
-        className="add-experience-btn"
-        title="Add Degree"
-        iconPosition="left"
-        icon={Plus}
-      />
+      {isFormOpened ? (
+        <FormSection
+          showTitle={true}
+          title="Add Degree"
+          fields={formFields}
+          formType="inline"
+          showForm=""
+          showControls={true}
+          onAdd={handleAddDegree}
+          sectionContent={sectionContent}
+          updateSectionContent={updateSectionContent}
+        />
+      ) : (
+        <Button
+          className="add-experience-btn"
+          title="Add Degree"
+          iconPosition="left"
+          icon={Plus}
+          onClick={() => setIsFormOpened(true)}
+        />
+      )}
     </div>
   );
 }
