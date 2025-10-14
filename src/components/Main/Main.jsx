@@ -5,6 +5,7 @@ import FormSection from "../FormSection/FormSection";
 import SkillsSection from "../SkillSection/SkillSection";
 import Experience from "../Experience/Experience";
 import Education from "../Education/Education";
+import CVPreview from "../CVPreview/CVPreview";
 
 const formSections = [
   {
@@ -18,7 +19,7 @@ const formSections = [
       },
       {
         isInput: true,
-        id: "phone-number",
+        id: "phoneNumber",
         labelName: "Phone Number",
         isRequired: true,
       },
@@ -98,6 +99,10 @@ export default function Main({
                 removeSectionContent={removeSectionContent}
               />
             );
+          case 5:
+            return(
+              <CVPreview sectionContent={sectionContent}/>
+            )
 
           default:
             return formSections.map((section, index) =>
@@ -128,7 +133,7 @@ export default function Main({
         )}
         <Button
           className="next-button"
-          title="Next"
+          title = {linkIndex === 4 ? "View CV" : "Next"}
           icon={ChevronRight}
           onClick={() => {
             handleIndex(linkIndex + 1);

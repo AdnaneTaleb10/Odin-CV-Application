@@ -10,6 +10,7 @@ export default function CVBulider() {
     "Skills",
     "Work Experience",
     "Education",
+    "Preview CV"
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -98,6 +99,5 @@ function updateSectionContent(title, fieldId, value) {
 
   function changeIndex(index) {
     setActiveIndex(index);
-    /* setSectionName(sections[index]); */
   }
 }

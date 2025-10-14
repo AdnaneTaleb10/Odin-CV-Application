@@ -67,3 +67,8 @@
   right: 20px;
 }
 
+.next-button[title="View CV"] {
+  background-image: linear-gradient(135deg, #e64553, #8839ef);
+  color: #fff;
+  box-shadow: #0003 0 2px 4px, #0000004d 0 7px 13px -3px, #fff3 0 -3px inset;
+}

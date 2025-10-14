@@ -33,8 +33,6 @@ export default function Education({
 
   return (
     <div className="education-container">
-      {console.log(degrees)}
-
       {degrees.map((deg, idx) => (
         <HistoryItem
           key={idx}
