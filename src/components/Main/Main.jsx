@@ -100,9 +100,7 @@ export default function Main({
               />
             );
           case 5:
-            return(
-              <CVPreview sectionContent={sectionContent}/>
-            )
+            return <CVPreview sectionContent={sectionContent} />;
 
           default:
             return formSections.map((section, index) =>
@@ -120,25 +118,28 @@ export default function Main({
       })()}
 
       <div className="section-navigator">
-        {linkIndex > 0 && (
-          <Button
-            className="preivous-button"
-            title="Previous"
-            iconPosition="left"
-            icon={ChevronLeft}
-            onClick={() => {
-              handleIndex(linkIndex - 1);
-            }}
-          />
-        )}
-        <Button
-          className="next-button"
-          title = {linkIndex === 4 ? "View CV" : "Next"}
-          icon={ChevronRight}
-          onClick={() => {
-            handleIndex(linkIndex + 1);
-          }}
-        />
+        {linkIndex > 0 && linkIndex !== 5 ? (
+          <>
+            <Button
+              className="previous-button"
+              title="Previous"
+              iconPosition="left"
+              icon={ChevronLeft}
+              onClick={() => handleIndex(linkIndex - 1)}
+            />
+
+            <Button
+              className="next-button"
+              title={linkIndex === 4 ? "View CV" : "Next"}
+              icon={ChevronRight}
+              onClick={() => handleIndex(linkIndex + 1)}
+            />
+          </>
+        ) : linkIndex === 5 ? (
+          <div className="edit-button-wrapper">
+            <Button className="edit-cv-button" title="Edit CV" />
+          </div>
+        ) : null}
       </div>
     </div>
   );
