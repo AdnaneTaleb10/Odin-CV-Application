@@ -100,7 +100,7 @@ export default function Main({
               />
             );
           case 5:
-            return <CVPreview sectionContent={sectionContent} />;
+            return <CVPreview sectionContent={sectionContent} editCv={() => handleIndex(1)}/>;
 
           default:
             return formSections.map((section, index) =>
@@ -137,7 +137,7 @@ export default function Main({
           </>
         ) : linkIndex === 5 ? (
           <div className="edit-button-wrapper">
-            <Button className="edit-cv-button" title="Edit CV" />
+            <Button className="edit-cv-button" title="Edit CV" onClick={() => handleIndex(0)}/>
           </div>
         ) : null}
       </div>
