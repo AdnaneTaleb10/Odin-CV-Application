@@ -3,7 +3,13 @@ import Logo from "../Logo/Logo";
 import { Save, ArrowDownFromLine, Book, Trash } from "lucide-react";
 import "./Sidebar.css";
 
-export default function Sidebar({ selectedLink, onLinkChange , loadCvExample , clearCv}) {
+export default function Sidebar({
+  selectedLink,
+  onLinkChange,
+  loadCvExample,
+  clearCv,
+  isCvExampleLoaded,
+}) {
   const sections = [
     "Personal Information",
     "Professional Summary",
@@ -14,7 +20,6 @@ export default function Sidebar({ selectedLink, onLinkChange , loadCvExample , c
 
   return (
     <div className="sidebar">
-      
       <div className="sidebar-top">
         <Logo />
         <div className="sections">
@@ -34,11 +39,25 @@ export default function Sidebar({ selectedLink, onLinkChange , loadCvExample , c
       </div>
 
       <div className="buttons">
-        <Button className="view-cv-btn" title="ViewCV" />
+        <Button
+          className={`view-cv-btn ${isCvExampleLoaded ? "active" : ""}`}
+          title="View CV"
+          onClick={() => onLinkChange(5)}
+        />
         <Button className="save-btn" title="Save" icon={Save} />
-        <Button className="load-btn" title="Load" icon={ArrowDownFromLine}/>
-        <Button className="load-example-btn" title="Example" icon={Book} onClick={loadCvExample}/>
-        <Button className="clear-btn" title="Clear" icon={Trash} onClick={clearCv}/>
+        <Button className="load-btn" title="Load" icon={ArrowDownFromLine} />
+        <Button
+          className="load-example-btn"
+          title="Example"
+          icon={Book}
+          onClick={loadCvExample}
+        />
+        <Button
+          className="clear-btn"
+          title="Clear"
+          icon={Trash}
+          onClick={clearCv}
+        />
       </div>
     </div>
   );

@@ -264,6 +264,7 @@ export default function CVBulider() {
         onLinkChange={changeIndex}
         loadCvExample={loadCvExample}
         clearCv={clearCv}
+        isCvExampleLoaded={isCvExampleLoaded}
       />
       <Main
         currentSection={sections[activeIndex]}
