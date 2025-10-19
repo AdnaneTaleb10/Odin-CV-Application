@@ -3,7 +3,7 @@ import Logo from "../Logo/Logo";
 import { Save, ArrowDownFromLine, Book, Trash } from "lucide-react";
 import "./Sidebar.css";
 
-export default function Sidebar({ selectedLink, onLinkChange }) {
+export default function Sidebar({ selectedLink, onLinkChange , loadCvExample , clearCv}) {
   const sections = [
     "Personal Information",
     "Professional Summary",
@@ -36,9 +36,9 @@ export default function Sidebar({ selectedLink, onLinkChange }) {
       <div className="buttons">
         <Button className="view-cv-btn" title="ViewCV" />
         <Button className="save-btn" title="Save" icon={Save} />
-        <Button className="load-btn" title="Load" icon={ArrowDownFromLine} />
-        <Button className="load-example-btn" title="Example" icon={Book} />
-        <Button className="clear-btn" title="Clear" icon={Trash} />
+        <Button className="load-btn" title="Load" icon={ArrowDownFromLine}/>
+        <Button className="load-example-btn" title="Example" icon={Book} onClick={loadCvExample}/>
+        <Button className="clear-btn" title="Clear" icon={Trash} onClick={clearCv}/>
       </div>
     </div>
   );

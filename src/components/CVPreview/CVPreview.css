@@ -1,6 +1,6 @@
 .cv {
   background-color: white;
-  aspect-ratio: 1 / 1.414;
+/*   aspect-ratio: 1 / 1.414;*/
   overflow-y: scroll;
   border-width: 2px;
   border-style: solid;
@@ -13,6 +13,9 @@
   flex-direction: column;
   align-items: stretch;
   gap: 1em;
+  max-height: 760px;
+  min-width: 40%;
+  max-width: 40%;
 }
 
 .name {

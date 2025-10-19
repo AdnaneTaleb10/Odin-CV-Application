@@ -10,7 +10,7 @@ export default function CVBulider() {
     "Skills",
     "Work Experience",
     "Education",
-    "Preview CV"
+    "Preview CV",
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -46,29 +46,159 @@ export default function CVBulider() {
     },
   ]);
 
-function updateSectionContent(title, fieldId, value) {
-  setSectionContent((prev) =>
-    prev.map((section) => {
-      if (section.title !== title) return section;
+  function updateSectionContent(title, fieldId, value) {
+    setSectionContent((prev) =>
+      prev.map((section) => {
+        if (section.title !== title) return section;
 
-      if (!Array.isArray(section.content)) {
+        if (!Array.isArray(section.content)) {
+          return {
+            ...section,
+            content: {
+              ...section.content,
+              [fieldId]: value,
+            },
+          };
+        }
+
         return {
           ...section,
-          content: {
-            ...section.content,
-            [fieldId]: value,
-          },
+          content: [...section.content, value],
         };
-      }
+      })
+    );
+  }
 
-      return {
-        ...section,
-        content: [...section.content, value],
-      };
-    })
-  );
-}
+  function loadCvExample() {
+    setSectionContent([
+      {
+        title: "Personal Information",
+        content: {
+          name: "John Doe",
+          phoneNumber: "+69 1234567890",
+          email: "johndoe@gmail.com",
+          website: "johndoe.com",
+          location: "Portsmouth, UK",
+        },
+      },
+      {
+        title: "Professional Summary",
+        content: {
+          role: "Software Developer",
+          summary:
+            "A seasoned developer with over 8 years of experience in software integration and security-oriented solutions. Proficient in Salesforce and Agile Scrum methodologies, my biggest achievement includes boosting system performance by 30% through API integration.",
+        },
+      },
+      {
+        title: "Skills",
+        content: [
+          "Salesforce",
+          "Agile Scrum",
+          "JavaScript",
+          "Angular",
+          "Ajax",
+          "React",
+          "NextJS",
+          "CI/CD",
+          "Test-Driven Development",
+          "Object-Oriented Design",
+        ],
+      },
+      {
+        title: "Work Experience",
+        content: [
+          {
+            position: "Senior Software Developer",
+            organization: "Optum",
+            startDate: "05/03/2021",
+            endDate: "22/03/2023",
+            location: "London, UK",
+            achievements: [
+              "Led the integration of critical APIs improving data retrieval speeds by 30%, enhancing overall system performance.",
+              "Automated testing processes, reducing manual errors by 25% and streamlining workflow for improved team efficiency.",
+              "Collaborated on strategic data migration projects, resulting in a 40% increase in data availability and relevance.",
+              "Provided mentorship to junior developers resulting in a 20% improvement in team programming skill proficiency.",
+              "Enhanced user experience through thoughtful application design changes, boosting customer satisfaction scores by 10%.",
+            ],
+          },
+          {
+            position: "Software Engineer",
+            organization: "UnitedHealth Group",
+            startDate: "01/06/2018",
+            endDate: "28/03/2023",
+            location: "Dublin, Ireland",
+            achievements: [
+              "Developed tailored software applications that met client specifications, improving operational efficiency by 35%.",
+              "Worked in an Agile Scrum environment to achieve timely delivery of project milestones, reducing time-to-market by 20%.",
+              "Enhanced automation mechanisms that saved an average of 15 hours per week across development processes.",
+              "Conducted comprehensive debugging sessions resulting in the identification and resolution of complex issues.",
+              "Supported team efforts in maintaining system stability, ensuring an uptime of 99.8% over a 12-month period.",
+            ],
+          },
+          {
+            position: "Junior Developer",
+            organization: "Tech Data UK",
+            startDate: "23/01/2015",
+            endDate: "0505/2018",
+            location: "Basingstoke, UK",
+            achievements: [
+              "Assisted in software development projects that improved system scalability by 25%, enhancing user experience.",
+              "Participated in weekly team standups to align project goals and foster a collaborative work environment.",
+              "Contributed to the development of a user-friendly API interface, reducing customer support queries by 15%.",
+              "Provided input in the development of risk management tools, resulting in a more secure data handling process.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Education",
+        content: [
+          {
+            degree: "Associate Degree in Computer Science",
+            institution: "Portsmouth College",
+            startDate: "10/01/2013",
+            endDate: "01/2015",
+            location: "Portsmouth, UK",
+            achievements: [],
+          },
+        ],
+      },
+    ]);
+  }
 
+  function clearCv() {
+    setSectionContent([
+      {
+        title: "Personal Information",
+        content: {
+          name: "",
+          phoneNumber: "",
+          email: "",
+          website: "",
+          location: "",
+        },
+      },
+      {
+        title: "Professional Summary",
+        content: {
+          role: "",
+          summary: "",
+        },
+      },
+      {
+        title: "Skills",
+        content: [],
+      },
+      {
+        title: "Work Experience",
+        content: [],
+      },
+      {
+        title: "Education",
+        content: [],
+      },
+    ]);
+  }
 
   function removeSectionContent(title, value) {
     setSectionContent((prev) =>
@@ -85,7 +215,13 @@ function updateSectionContent(title, fieldId, value) {
 
   return (
     <div className="cv-builder">
-      <Sidebar selectedLink={activeIndex} onLinkChange={changeIndex} />
+      <Sidebar
+        selectedLink={activeIndex}
+        onLinkChange={changeIndex}
+        loadCvExample={loadCvExample}
+        clearCv={clearCv}
+      />{" "}
+      {/** I have to add a method in order to load a cv model when clicking on the example button, and also try to add functionalities for other buttons */}
       <Main
         currentSection={sections[activeIndex]}
         linkIndex={activeIndex}
