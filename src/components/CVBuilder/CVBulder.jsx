@@ -1,7 +1,8 @@
 import Sidebar from "../Sidebar/Sidebar";
 import Main from "../Main/Main";
 import "./CVBulder.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getContent, setContent } from "../../utils/localStorage";
 
 export default function CVBulider() {
   const sections = [
@@ -211,37 +212,43 @@ export default function CVBulider() {
   }
 
   function clearCv() {
-    setSectionContent([
-      {
-        title: "Personal Information",
-        content: {
-          name: "",
-          phoneNumber: "",
-          email: "",
-          website: "",
-          location: "",
+    const confirmClear = window.confirm(
+      "sYour current work will be deleted. Do you want to continue?"
+    );
+
+    if (confirmClear) {
+      setSectionContent([
+        {
+          title: "Personal Information",
+          content: {
+            name: "",
+            phoneNumber: "",
+            email: "",
+            website: "",
+            location: "",
+          },
         },
-      },
-      {
-        title: "Professional Summary",
-        content: {
-          role: "",
-          summary: "",
+        {
+          title: "Professional Summary",
+          content: {
+            role: "",
+            summary: "",
+          },
         },
-      },
-      {
-        title: "Skills",
-        content: [],
-      },
-      {
-        title: "Work Experience",
-        content: [],
-      },
-      {
-        title: "Education",
-        content: [],
-      },
-    ]);
+        {
+          title: "Skills",
+          content: [],
+        },
+        {
+          title: "Work Experience",
+          content: [],
+        },
+        {
+          title: "Education",
+          content: [],
+        },
+      ]);
+    }
   }
 
   function removeSectionContent(title, value) {
@@ -257,11 +264,39 @@ export default function CVBulider() {
     );
   }
 
+  function handleLoadCv() {
+    const saved = getContent("cv-section-content");
+    console.log(saved);
+    if (saved) {
+      setSectionContent(saved);
+    }
+  }
+
+  function handleSaveCv() {
+    const existingCv = getContent("cv-section-content");
+
+    if (existingCv) {
+      const confirmOverwrite = window.confirm(
+        "A saved CV already exists. Saving now will overwrite it. Do you want to continue?"
+      );
+
+      if (!confirmOverwrite) {
+        alert("Save cancelled.");
+        return;
+      }
+    }
+
+    setContent("cv-section-content", sectionContent);
+    alert("CV saved successfully!");
+  }
+
   return (
     <div className="cv-builder">
       <Sidebar
         selectedLink={activeIndex}
         onLinkChange={changeIndex}
+        handleSaveCv={handleSaveCv}
+        handleLoadCv={handleLoadCv}
         loadCvExample={loadCvExample}
         clearCv={clearCv}
         isCvExampleLoaded={isCvExampleLoaded}

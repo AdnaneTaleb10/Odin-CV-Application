@@ -100,7 +100,12 @@ export default function Main({
               />
             );
           case 5:
-            return <CVPreview sectionContent={sectionContent} editCv={() => handleIndex(1)}/>;
+            return (
+              <CVPreview
+                sectionContent={sectionContent}
+                editCv={() => handleIndex(1)}
+              />
+            );
 
           default:
             return formSections.map((section, index) =>
@@ -118,7 +123,8 @@ export default function Main({
       })()}
 
       <div className="section-navigator">
-        {linkIndex > 0 && linkIndex !== 5 ? (
+        {/** Before moving to the next section, I must check if the required information are entered, if no then highlight the empty field with red */}
+        {linkIndex >= 0 && linkIndex !== 5 ? (
           <>
             <Button
               className="previous-button"
@@ -132,12 +138,18 @@ export default function Main({
               className="next-button"
               title={linkIndex === 4 ? "View CV" : "Next"}
               icon={ChevronRight}
-              onClick={() => handleIndex(linkIndex + 1)}
+              onClick={() => {
+                console.log(sectionContent), handleIndex(linkIndex + 1);
+              }}
             />
           </>
         ) : linkIndex === 5 ? (
           <div className="edit-button-wrapper">
-            <Button className="edit-cv-button" title="Edit CV" onClick={() => handleIndex(0)}/>
+            <Button
+              className="edit-cv-button"
+              title="Edit CV"
+              onClick={() => handleIndex(0)}
+            />
           </div>
         ) : null}
       </div>

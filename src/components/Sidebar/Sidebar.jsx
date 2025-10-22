@@ -2,10 +2,13 @@ import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import { Save, ArrowDownFromLine, Book, Trash } from "lucide-react";
 import "./Sidebar.css";
+import { getContent, setContent } from "../../utils/localStorage";
 
 export default function Sidebar({
   selectedLink,
   onLinkChange,
+  handleSaveCv,
+  handleLoadCv,
   loadCvExample,
   clearCv,
   isCvExampleLoaded,
@@ -44,8 +47,18 @@ export default function Sidebar({
           title="View CV"
           onClick={() => onLinkChange(5)}
         />
-        <Button className="save-btn" title="Save" icon={Save} />
-        <Button className="load-btn" title="Load" icon={ArrowDownFromLine} />
+        <Button
+          className="save-btn"
+          title="Save"
+          icon={Save}
+          onClick={handleSaveCv}
+        />
+        <Button
+          className="load-btn"
+          title="Load"
+          icon={ArrowDownFromLine}
+          onClick={handleLoadCv}
+        />
         <Button
           className="load-example-btn"
           title="Example"
