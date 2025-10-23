@@ -52,11 +52,12 @@ main p {
 .start {
   padding: 0.6em 1.2em;
   font-size: 1.5rem;
+  font-family: Montserrat;
+  font-weight: 500;
   border: none;
   color: white;
   background-image: linear-gradient(135deg, #e64553, #8839ef);
-  border-radius: 15px;
-  box-shadow: #0003 0 2px 4px, #0000004d 0 7px 13px -3px, #fff3 0 -3px inset;
+  border-radius: 10px;
   transition: transform ease 0.5s;
   cursor: pointer;
 }

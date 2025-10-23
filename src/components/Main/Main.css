@@ -26,7 +26,7 @@
   padding: 1em 2em;
 }
 
-.btn {
+.section-navigator .btn {
   display: flex;
   align-items: center;
   justify-content: center;

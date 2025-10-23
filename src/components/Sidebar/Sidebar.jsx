@@ -2,7 +2,6 @@ import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import { Save, ArrowDownFromLine, Book, Trash } from "lucide-react";
 import "./Sidebar.css";
-import { getContent, setContent } from "../../utils/localStorage";
 
 export default function Sidebar({
   selectedLink,

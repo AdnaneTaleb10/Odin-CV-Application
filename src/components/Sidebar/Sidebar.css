@@ -53,7 +53,7 @@
   gap: 12px;
 }
 
-.buttons .btn {
+.sidebar .buttons .btn {
   width: 100%;
   display: flex;
   align-items: center;

@@ -1,10 +1,10 @@
 import Sidebar from "../Sidebar/Sidebar";
 import Main from "../Main/Main";
-import "./CVBulder.css";
+import "./CVBuilder.css";
 import { useEffect, useState } from "react";
 import { getContent, setContent } from "../../utils/localStorage";
 
-export default function CVBulider() {
+export default function CVBuilder() {
   const sections = [
     "Personal Information",
     "Professional Summary",

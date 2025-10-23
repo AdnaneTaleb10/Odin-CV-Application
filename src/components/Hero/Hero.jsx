@@ -4,15 +4,10 @@ import logo from "../../assets/cv.svg";
 import { ChevronRight } from "lucide-react";
 import "./Hero.css";
 
-export default function Hero() {
+export default function Hero({onStart}) {
   return (
     <section className="hero">
       <div className="hero-content">
-        {/* <div className="logo">
-          <img src={logo} alt="CVLIAN logo" />
-          <h1>CVLIAN</h1>
-        </div> */}
-
         <Logo />
         <main>
           <div className="hero-text">
@@ -20,9 +15,13 @@ export default function Hero() {
             <p className="decorative-hero">NEXT LEVEL</p>
             <p>with an eye-catching CV</p>
           </div>
-          <Button className="start" icon={ChevronRight}>
-            Get Started
-          </Button>
+          <Button  
+            title="Get Started"
+            className="start"
+            iconPosition="right"
+            icon={ChevronRight}
+            onClick={onStart}
+          />
         </main>
       </div>
     </section>
