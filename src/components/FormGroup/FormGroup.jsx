@@ -21,32 +21,16 @@ export default function FormGroup({
   const fieldValue =
     sectionIndex !== -1 ? sectionContent[sectionIndex].content?.[id] || "" : "";
 
-  // ✅ Determine if this field is invalid
-  const [isInvalid, setIsInvalid] = useState(invalidFields.includes(id));
-
-  // ✅ Keep in sync with parent’s invalidFields array
-  useEffect(() => {
-    setIsInvalid(invalidFields.includes(id));
-  }, [invalidFields, id]);
-
   const handleValueChange = (e) => {
     const newValue = e.target.value;
-
-    // Update parent content
     updateSectionContent(title, id, newValue);
-
-    // ✅ If user starts typing, remove invalid style
-    if (newValue.trim() !== "" && isInvalid) {
-      setIsInvalid(false);
-    }
   };
 
+  // ✅ directly check invalidFields from props
+  const isInvalid = invalidFields.includes(id);
+
   return (
-    <div
-      className={`form-group ${extraClass ? extraClass : ""} ${
-        isInvalid ? "invalid" : ""
-      }`}
-    >
+    <div className={`form-group ${extraClass} ${isInvalid ? "invalid" : ""}`}>
       <label className={fieldValue ? "active" : ""} htmlFor={id}>
         {labelName}
       </label>
@@ -60,7 +44,6 @@ export default function FormGroup({
           placeholder={placeholder}
           required={isRequired}
           onChange={handleValueChange}
-          onFocus={() => setIsInvalid(false)} 
         />
       ) : (
         <textarea
@@ -70,7 +53,6 @@ export default function FormGroup({
           value={fieldValue}
           required={isRequired}
           onChange={handleValueChange}
-          onFocus={() => setIsInvalid(false)}
           cols="43"
           rows={1}
           wrap="off"
@@ -79,3 +61,4 @@ export default function FormGroup({
     </div>
   );
 }
+  

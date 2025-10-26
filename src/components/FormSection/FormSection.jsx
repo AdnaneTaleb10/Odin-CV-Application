@@ -9,16 +9,15 @@ export default function FormSection({
   showTitle = false,
   title = "",
   fields = [],
-  formType = "standard", 
+  formType = "standard",
   showControls = false,
   showForm,
   sectionContent,
   updateSectionContent,
   withAccomplishments = false,
-  onAdd, 
-  invalidFields
+  onAdd,
+  invalidFields,
 }) {
-
   const [formData, setFormData] = useState({});
   const [accomplishments, setAccomplishments] = useState([]);
 
@@ -106,7 +105,11 @@ export default function FormSection({
 
         {showControls && (
           <div className="control-btns">
-            <Button className="add-btn" title="Add" onClick={handleAdd} />
+            <Button
+              className="add-btn"
+              title="Add"
+              onClick={handleAdd}
+            />
             <Button
               className="cancel-btn"
               title="Cancel"

@@ -21,17 +21,17 @@ export default function Experience({
   const [isFormOpened, setIsFormOpened] = useState(false);
 
   // extract work experience data for this section
-  const experiences = sectionContent.find(
-    (section) => section.title === "Work Experience"
-  )?.content || [];
+  const experiences =
+    sectionContent.find((section) => section.title === "Work Experience")
+      ?.content || [];
 
   function handleAddExperience(newExperience) {
     updateSectionContent("Work Experience", null, newExperience);
-    setIsFormOpened(false);
+    setIsFormOpened(false); // this hides the form
   }
 
-  function removeExperience(experience){
-    removeSectionContent("Work Experience" , experience)
+  function removeExperience(experience) {
+    removeSectionContent("Work Experience", experience);
   }
 
   return (
@@ -45,12 +45,13 @@ export default function Experience({
           endDate={exp.endDate}
           location={exp.location}
           achievements={exp.achievements}
-          handleDeletion = {() => removeExperience(exp)}
+          handleDeletion={() => removeExperience(exp)}
         />
       ))}
 
       {isFormOpened ? (
         <FormSection
+          showTitle={true}
           title="Add Experience"
           fields={formFields}
           formType="inline"

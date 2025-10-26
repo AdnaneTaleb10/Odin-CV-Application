@@ -68,7 +68,14 @@ export default function CVBuilder() {
         };
       })
     );
+
+    if (typeof value === "string" && value.trim() === "") {
+      setInvalidFields((prevInvalid) =>
+        prevInvalid.filter((id) => id !== fieldId)
+      );
+    }
   }
+
   const [isCvExampleLoaded, setIsCvExampleLoaded] = useState(false);
 
   function loadCvExample() {
@@ -169,6 +176,7 @@ export default function CVBuilder() {
       ]);
 
       setIsCvExampleLoaded(true);
+      setInvalidFields([]);
     } else {
       const confirmLoad = window.confirm(
         "Your current work will be lost. Do you want to continue?"
@@ -315,8 +323,7 @@ export default function CVBuilder() {
     ];
 
     const section = formSections.find((_, index) => index === linkIndex);
-    if (!section) return true; // Non-form sections (like Skills, Work Experience, etc.)
-
+    if (!section) return true;
     const currentSectionData =
       sectionContent.find((s) => s.title === section.title)?.content || {};
 
@@ -329,9 +336,8 @@ export default function CVBuilder() {
   }
 
   function changeIndex(index) {
-    // ✅ Validate the current section before switching
     const isValid = validateCurrentSection(activeIndex);
-    if (!isValid) return; // Block sidebar navigation if invalid
+    if (!isValid) return;
 
     setActiveIndex(index);
   }
@@ -354,7 +360,7 @@ export default function CVBuilder() {
         sectionContent={sectionContent}
         updateSectionContent={updateSectionContent}
         removeSectionContent={removeSectionContent}
-        invalidFields={invalidFields} 
+        invalidFields={invalidFields}
       />
     </div>
   );
