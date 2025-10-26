@@ -38,8 +38,7 @@
   background-color: #fcfcfd;
   color: #36395a;
   font-family: Montserrat, monospace;
-  box-shadow: #2d234266 0 2px 4px, #2d23424d 0 7px 13px -3px,
-    #d6d6e7 0 -3px inset;
+  box-shadow: #2d234266 0 2px 4px, #2d23424d 0 7px 13px -3px;
   cursor: pointer;
   transition: transform ease 0.4s;
 }
@@ -82,6 +81,6 @@
 
 .edit-cv-button {
   background-image: linear-gradient(135deg, #e64553, #8839ef);
-  color: #fff;
+  color: #fff !important;
   box-shadow: #0003 0 2px 4px, #0000004d 0 7px 13px -3px, #fff3 0 -3px inset;
 }

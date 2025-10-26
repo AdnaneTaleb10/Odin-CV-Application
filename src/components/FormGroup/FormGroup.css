@@ -27,6 +27,10 @@ textarea {
   font-size: 1.3rem;
   font-weight: 500;
   resize: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  box-sizing: border-box;
 }
 
 input:focus,
