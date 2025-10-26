@@ -9,19 +9,19 @@ export default function FormSection({
   showTitle = false,
   title = "",
   fields = [],
-  formType = "standard", // "standard" | "inline"
+  formType = "standard", 
   showControls = false,
   showForm,
   sectionContent,
   updateSectionContent,
   withAccomplishments = false,
-  onAdd, // parent callback
+  onAdd, 
+  invalidFields
 }) {
-  // local state for all form fields
+
   const [formData, setFormData] = useState({});
   const [accomplishments, setAccomplishments] = useState([]);
 
-  // update local field values
   function handleFieldChange(fieldId, value) {
     setFormData((prev) => ({
       ...prev,
@@ -29,12 +29,10 @@ export default function FormSection({
     }));
   }
 
-  // handle add accomplishment
   function addAccomplishment(newItem) {
     setAccomplishments((prev) => [...prev, newItem]);
   }
 
-  // handle submit
   function handleAdd(e) {
     e.preventDefault();
     if (onAdd) {
@@ -80,6 +78,7 @@ export default function FormSection({
               isRequired={field.isRequired}
               sectionContent={sectionContent}
               updateSectionContent={updateSectionContent}
+              invalidFields={invalidFields}
             />
           );
         })}

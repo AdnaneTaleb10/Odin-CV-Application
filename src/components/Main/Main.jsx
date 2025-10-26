@@ -6,6 +6,7 @@ import SkillsSection from "../SkillSection/SkillSection";
 import Experience from "../Experience/Experience";
 import Education from "../Education/Education";
 import CVPreview from "../CVPreview/CVPreview";
+import { useState } from "react";
 
 const formSections = [
   {
@@ -69,10 +70,16 @@ export default function Main({
   sectionContent,
   updateSectionContent,
   removeSectionContent,
+  invalidFields, // ✅ from parent
 }) {
+  function handleNextClick() {
+    handleIndex(linkIndex + 1); // ✅ validation now happens in parent
+  }
+
   return (
     <div className="main">
       <h1 className="section-title">{currentSection}</h1>
+
       {(() => {
         switch (linkIndex) {
           case 2:
@@ -106,7 +113,6 @@ export default function Main({
                 editCv={() => handleIndex(1)}
               />
             );
-
           default:
             return formSections.map((section, index) =>
               linkIndex === index ? (
@@ -116,6 +122,7 @@ export default function Main({
                   fields={section.fields}
                   sectionContent={sectionContent}
                   updateSectionContent={updateSectionContent}
+                  invalidFields={invalidFields}
                 />
               ) : null
             );
@@ -123,7 +130,6 @@ export default function Main({
       })()}
 
       <div className="section-navigator">
-        {/** Before moving to the next section, I must check if the required information are entered, if no then highlight the empty field with red */}
         {linkIndex >= 0 && linkIndex !== 5 ? (
           <>
             <Button
@@ -138,9 +144,7 @@ export default function Main({
               className="next-button"
               title={linkIndex === 4 ? "View CV" : "Next"}
               icon={ChevronRight}
-              onClick={() => {
-                console.log(sectionContent), handleIndex(linkIndex + 1);
-              }}
+              onClick={handleNextClick}
             />
           </>
         ) : linkIndex === 5 ? (

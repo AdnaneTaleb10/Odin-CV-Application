@@ -7,6 +7,8 @@
   bottom: 10px;
   left: 5px;
   font-size: 1.3rem;
+  font-weight: 500;
+  color: grey;
   pointer-events: none;
   transition: all 0.2s ease-in-out;
 }
@@ -17,39 +19,31 @@
   color: #00f;
 }
 
-label {
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: grey;
-  position: absolute;
-  bottom: 5px;
-  left: 10px;
-}
-
-input {
+input,
+textarea {
   width: 20em;
   border: none;
   border-bottom: 2px solid lightgray;
   font-size: 1.3rem;
   font-weight: 500;
+  resize: none;
 }
 
-input,textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
 }
 
-input:not(:placeholder-shown) {
-  border-bottom: 2px solid #00f;
-}
-
+input:not(:placeholder-shown),
 textarea:not(:placeholder-shown) {
   border-bottom: 2px solid #00f;
 }
 
-textarea {
-  overflow: hidden;
-  resize: none;
-  border: none;
-  border-bottom: 2px solid lightgray;
-  font-weight: 500;
+.form-group.invalid input,
+.form-group.invalid textarea {
+  border-bottom: 2px solid red;
+}
+
+.form-group.invalid label {
+  color: red;
 }

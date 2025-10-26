@@ -290,6 +290,52 @@ export default function CVBuilder() {
     alert("CV saved successfully!");
   }
 
+  const [invalidFields, setInvalidFields] = useState([]);
+
+  function validateCurrentSection(linkIndex) {
+    // Import formSections here or define them at the top of the file
+    const formSections = [
+      {
+        title: "Personal Information",
+        fields: [
+          { id: "name", isRequired: true },
+          { id: "phoneNumber", isRequired: true },
+          { id: "email", isRequired: true },
+          { id: "website", isRequired: false },
+          { id: "location", isRequired: true },
+        ],
+      },
+      {
+        title: "Professional Summary",
+        fields: [
+          { id: "role", isRequired: true },
+          { id: "summary", isRequired: true },
+        ],
+      },
+    ];
+
+    const section = formSections.find((_, index) => index === linkIndex);
+    if (!section) return true; // Non-form sections (like Skills, Work Experience, etc.)
+
+    const currentSectionData =
+      sectionContent.find((s) => s.title === section.title)?.content || {};
+
+    const emptyRequiredFields = section.fields
+      .filter((f) => f.isRequired && !currentSectionData[f.id])
+      .map((f) => f.id);
+
+    setInvalidFields(emptyRequiredFields);
+    return emptyRequiredFields.length === 0;
+  }
+
+  function changeIndex(index) {
+    // ✅ Validate the current section before switching
+    const isValid = validateCurrentSection(activeIndex);
+    if (!isValid) return; // Block sidebar navigation if invalid
+
+    setActiveIndex(index);
+  }
+
   return (
     <div className="cv-builder">
       <Sidebar
@@ -308,11 +354,8 @@ export default function CVBuilder() {
         sectionContent={sectionContent}
         updateSectionContent={updateSectionContent}
         removeSectionContent={removeSectionContent}
+        invalidFields={invalidFields} 
       />
     </div>
   );
-
-  function changeIndex(index) {
-    setActiveIndex(index);
-  }
 }
